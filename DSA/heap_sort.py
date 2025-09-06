@@ -68,11 +68,11 @@ def read_array():
             heap_size = heap_size + 1
     print(heap)
     print(len(heap))
-    return heap
+    return heap, len(heap)
 
 read_array()
 #n = int(input("Enter the number of elements: "))
-heaped_array = read_array(n)
+heaped_array, n = read_array()
 #print(heaped_array)
 sorted_array = heap_sort(heaped_array, n)
 print(f"Sorted Array: {sorted_array}")
