@@ -2,25 +2,6 @@
 
 import array as arr
 
-# Dynamic array to take user input for heap sort
-def get_array(n):
-    heap = arr.array('i', [])
-    for heap_size in range(n):
-        element = int(input("Enter element: "))
-        heap.append(element)
-
-        i = heap_size + 1
-        while (i > 1):
-            parent = (int)(i / 2)
-            if heap[parent - 1] < heap[i - 1]:
-                heap[parent - 1], heap[i - 1] = heap[i - 1], heap[parent - 1]
-                i = (int)(i / 2)
-            else:
-                break
-            
-    print("Heap created.")
-    return heap
-
 def heap_sort(unsorted, h_size):
     while(h_size > 1):
         i = 1
@@ -42,10 +23,9 @@ def heap_sort(unsorted, h_size):
                 child1 = parent * 2 + 1
                 child2 = child1 + 1
         unsorted[h_size] = deleted
-        #print (unsorted)
-        #print(h_size)
     return unsorted
 
+# Array to take input from a text file
 def read_array():
     arrayfile = open("unsorted_array.txt", "r")
     lines = arrayfile.readlines()
@@ -66,13 +46,13 @@ def read_array():
                 else:
                     break
             heap_size = heap_size + 1
-    print(heap)
-    print(len(heap))
+    print(f"Heap Created: {heap}")
+    print(f"Length of the array: {len(heap)}")
     return heap, len(heap)
 
 read_array()
-#n = int(input("Enter the number of elements: "))
+
 heaped_array, n = read_array()
-#print(heaped_array)
+
 sorted_array = heap_sort(heaped_array, n)
 print(f"Sorted Array: {sorted_array}")
