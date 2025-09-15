@@ -1,0 +1,41 @@
+def read_properties(A):
+    propfile = open("props.txt", "r")
+    lines = propfile.readlines()
+
+    for line in lines:
+        A.append(line.split())
+    
+    if (len(A) != 3):
+        print(f"Format unsupported.\nCurrent Format: {A}")
+        exit(1)
+
+    if (len(A[0]) != len(A[1]) or len(A[2]) != len(A[1])):
+        print(f"All lines should be of the same length.\nFirst Line: {A[0]}\nSecond Line: {A[1]}\nThird Line: {A[2]}")
+        exit(1)
+    return A
+
+def get_ProfitPerWeight(A):
+    ppw = []
+    ppw = A[1]/A[2]
+    return ppw
+
+def fillTheBag(A, max_w):
+    pos = -1
+    wt = 0
+    profit = 0
+    while(wt <= max_w):
+        pos = max(A[3])
+        if (wt + A[2][pos] <= max_w):
+            wt = wt + A[2][pos]
+            profit = profit + A[2][pos]
+            A[2][pos] = 0
+            A[3][pos] = 0
+        else
+
+
+A=[]
+A=read_properties(A)
+metric = get_ProfitPerWeight(A)
+A.append(metric)
+
+max_w = float(input("Enter the maximum weight that the bag can hold: "))
