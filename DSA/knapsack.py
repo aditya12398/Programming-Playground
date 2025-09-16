@@ -22,16 +22,20 @@ def get_ProfitPerWeight(A):
 def fillTheBag(A, max_w):
     pos = -1
     wt = 0
-    profit = 0
+
+    xi = [0] * len(A)
     while(wt <= max_w):
-        pos = max(A[3])
+        pos = A[3].index(max(A[3]))
+        if (max(A[3]) == -1):
+            break
         if (wt + A[2][pos] <= max_w):
             wt = wt + A[2][pos]
-            profit = profit + A[2][pos]
-            A[2][pos] = 0
-            A[3][pos] = 0
-        else
-
+            xi[pos] = 1.0
+        else:
+            xi[pos] = (max_w - wt)/A[2][pos]
+            wt = max_w
+        A[3][pos] = -1
+    return xi
 
 A=[]
 A=read_properties(A)
@@ -39,3 +43,7 @@ metric = get_ProfitPerWeight(A)
 A.append(metric)
 
 max_w = float(input("Enter the maximum weight that the bag can hold: "))
+ob_ratio = fillTheBag(A, max_w)
+profit = 0
+for i in len(A):
+    profit = profit + ob_ratio[i] * A[1]
