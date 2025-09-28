@@ -45,13 +45,13 @@ public:
 int main()
 {
     int n, d;
-    auto start = std::chrono::high_resolution_clock::now();
     std::cout << "Enter Numerator: ";
     std::cin >> n;
     std::cout << "Enter Denominator: ";
     std::cin >> d;
     Solution s;
     std::string dd;
+    auto start = std::chrono::high_resolution_clock::now();
     dd = s.fractionToDecimal(n, d);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start).count();
