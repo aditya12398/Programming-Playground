@@ -54,6 +54,6 @@ int main()
     auto start = std::chrono::high_resolution_clock::now();
     dd = s.fractionToDecimal(n, d);
     auto end = std::chrono::high_resolution_clock::now();
-    auto duration = std::chrono::duration_cast<std::chrono::seconds>(end - start).count();
-    std::cout << "Decimal Part: " << dd << "\nIn " << duration << " seconds.\n";
+    auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start).count();
+    std::cout << "Decimal Part: " << dd << "\nIn " << duration << " microseconds.\n";
 }
